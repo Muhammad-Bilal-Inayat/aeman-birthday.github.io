@@ -64,6 +64,8 @@
       document.querySelectorAll('.flame').forEach(function(f){f.classList.add('out')});
       blow.textContent='🎉 Wish Maang Li!';
       document.getElementById('cake-msg').classList.remove('hidden');
+      var nextGift=document.getElementById('gift-next');
+      if(nextGift) nextGift.classList.remove('hidden');
       confetti(innerWidth/2,240);
     });
   }
