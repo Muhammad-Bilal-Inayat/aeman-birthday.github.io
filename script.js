@@ -1,9 +1,10 @@
-// Shared behaviour: nav, countdown, floating hearts, confetti, tilt, flip, cake, gift, typewriter.
+// Shared behaviour: nav, countdown, floating birthday, confetti, tilt, flip, cake, gift, typewriter.
 (function(){
   // Floating birthday items — gentle, decorative only.
   var emojis=['🎂','🎈','🎉','🎁','✨'];
   function fall(){
-    var s=document.createElement('span'); s.className='fall'; s.textContent=emojis[Math.floor(Math.random()*emojis.length)];
+    var emoji=emojis[Math.floor(Math.random()*emojis.length)];
+    var s=document.createElement('span'); s.className=(emoji==='🎈' ? 'rise' : 'fall'); s.textContent=emoji;
     s.style.left=Math.random()*96+'vw'; s.style.fontSize=(16+Math.random()*18)+'px';
     s.style.animationDuration=(6+Math.random()*5)+'s'; document.body.appendChild(s);
     setTimeout(function(){s.remove()},12000);
@@ -12,7 +13,7 @@
 
   // Confetti on any big tap button.
   function confetti(x,y){
-    var colors=['#ff4d8d','#8b5cf6','#f5c542','#ff8fab','#ffffff'];
+    var colors=['#ff2e7e','#7c3aed','#f7c948','#ff8fb3','#ffffff'];
     for(var i=0;i<28;i++){
       var s=document.createElement('span'); s.className='spark'; s.textContent='✦';
       s.style.left=(x||innerWidth/2)+'px'; s.style.top=(y||200)+'px'; s.style.color=colors[i%colors.length];
@@ -24,6 +25,8 @@
     var b=e.target.closest('.btn,.gift,.flip');
     if(b && b.classList.contains('btn')) confetti(e.clientX,e.clientY);
   });
+  // One welcome confetti burst when a page opens.
+  setTimeout(function(){confetti(innerWidth/2,180)},700);
 
   // Countdown to 1 November, next occurrence. On 1 Nov: IT'S TODAY!
   var el=document.getElementById('countdown');
