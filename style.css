@@ -63,3 +63,18 @@ img{max-width:100%;height:auto;display:block;border-radius:20px}
 .reveal{opacity:1}
 .footer{text-align:center;color:#6b4a5e;font-size:14px;padding:20px}
 .note{font-size:14px;color:#6b4a5e;line-height:1.5}
+
+/* Home page: cute, soft, female-friendly UI/UX. Scoped to .home only. */
+.home-hero{background:linear-gradient(180deg,rgba(255,255,255,.95),rgba(255,240,248,.85));border:1px solid #ffd1e3;border-radius:28px;padding:26px 16px 18px;box-shadow:0 16px 35px rgba(255,46,126,.16)}
+.cute-row{font-size:22px;letter-spacing:6px;margin:14px 0 0}
+.photo-frame{position:relative;max-width:360px;margin:22px auto;padding:10px;background:#fff;border:2px solid #ffd1e3;border-radius:28px;box-shadow:0 20px 40px rgba(124,58,237,.20);transform:rotate(-1.5deg)}
+.photo-frame img{border-radius:20px}
+.float-deco{position:absolute;font-size:26px;z-index:2;animation:floaty 3s ease-in-out infinite}
+.deco-1{top:-14px;left:-8px}
+.deco-2{top:-12px;right:6px;animation-delay:.6s}
+.deco-3{bottom:-12px;right:18px;animation-delay:1.2s}
+.date-card .count div{background:linear-gradient(180deg,#fff,#fff7fb);border-color:#f0c6dd}
+.step-dots{display:flex;gap:6px;flex-wrap:wrap;justify-content:center;margin-top:14px}
+.step-dots span{background:#fff;border:1px solid #ffd1e3;border-radius:999px;padding:7px 11px;font-size:13px;font-weight:700}
+.step-dots span.on{background:linear-gradient(90deg,var(--pink),var(--purple));color:#fff;border-color:var(--purple)}
+.step-card{border:2px solid #f7c948;box-shadow:0 16px 35px rgba(247,201,72,.28)}
