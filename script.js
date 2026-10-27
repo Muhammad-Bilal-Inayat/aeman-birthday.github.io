@@ -11,6 +11,41 @@
   }
   setInterval(fall,2200); fall();
 
+
+  // Auto music: Happy Birthday melody, no audio file needed.
+  // Browsers block sound before a tap, so it tries on load and
+  // starts on the first tap, then loops.
+  var musicCtx=null, musicStarted=false;
+  function startMusic(){
+    if(musicStarted) return; musicStarted=true;
+    try{
+      musicCtx=new (window.AudioContext||window.webkitAudioContext)();
+      var notes=[[392,.75],[392,.25],[440,1],[392,1],[523.25,1],[493.88,2],
+                 [392,.75],[392,.25],[440,1],[392,1],[587.33,1],[523.25,2],
+                 [392,.75],[392,.25],[783.99,1],[659.25,1],[523.25,1],[493.88,1],[440,2],
+                 [349.23,.75],[349.23,.25],[659.25,1],[523.25,1],[587.33,1],[523.25,2]];
+      (function playLoop(){
+        if(!musicCtx) return;
+        var t=musicCtx.currentTime+0.1, beat=0.45, total=0;
+        notes.forEach(function(n){
+          var osc=musicCtx.createOscillator(), gain=musicCtx.createGain();
+          osc.type='sine'; osc.frequency.value=n[0];
+          gain.gain.setValueAtTime(0.0001,t);
+          gain.gain.exponentialRampToValueAtTime(0.12,t+0.05);
+          gain.gain.exponentialRampToValueAtTime(0.0001,t+n[1]*beat);
+          osc.connect(gain); gain.connect(musicCtx.destination);
+          osc.start(t); osc.stop(t+n[1]*beat); t+=n[1]*beat; total=t;
+        });
+        setTimeout(playLoop, Math.max(0,(total-musicCtx.currentTime)*1000)+1200);
+      })();
+    }catch(e){ musicStarted=false; }
+  }
+  try{ startMusic(); }catch(e){}
+  document.addEventListener('pointerdown',function(){
+    if(!musicStarted) startMusic();
+    else if(musicCtx && musicCtx.state==='suspended') musicCtx.resume();
+  });
+
   // Confetti on any big tap button.
   function confetti(x,y){
     var colors=['#ff2e7e','#7c3aed','#f7c948','#ff8fb3','#ffffff'];
