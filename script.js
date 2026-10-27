@@ -1,7 +1,7 @@
 // Shared behaviour: nav, countdown, floating hearts, confetti, tilt, flip, cake, gift, typewriter.
 (function(){
-  // Floating hearts / petals — gentle, decorative only.
-  var emojis=['💖','🌸','✨','💕'];
+  // Floating birthday items — gentle, decorative only.
+  var emojis=['🎂','🎈','🎉','🎁','✨'];
   function fall(){
     var s=document.createElement('span'); s.className='fall'; s.textContent=emojis[Math.floor(Math.random()*emojis.length)];
     s.style.left=Math.random()*96+'vw'; s.style.fontSize=(16+Math.random()*18)+'px';
