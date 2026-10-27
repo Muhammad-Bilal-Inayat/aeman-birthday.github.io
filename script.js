@@ -87,7 +87,7 @@
     if(btn) btn.addEventListener('click',openGift);
   }
 
-  // Typewriter love letter (full text stays readable even if JS is slow: it is in the page below).
+  // Typewriter birthday message (full text stays readable even if JS is slow: it is in the page).
   var tw=document.getElementById('typewriter');
   if(tw){
     var text=tw.getAttribute('data-text')||''; var i=0;
